@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-6 offset-3 mt-5">
+    <form #eventForm="ngForm" (ngSubmit)="onFormSubmit(eventForm)">
+      <label for="id">#</label>
+      <input name="id" id="id" type="number" class="form-control mb-4" [(ngModel)]="event.id" readonly>
+      <label for="name">Name</label>
+      <input name="name" id="name" type="text" class="form-control" [class.mb-4]="eventForm.controls.name?.valid"
+        pattern=".{8,}" [(ngModel)]="event.name" required>
+      <div [hidden]="eventForm.controls.name?.valid" class="error-message mb-4">
+        A névnek minimum 8 karakter hosszúnak kell lennie!
+      </div>
+      <label for="date">Date</label>
+      <input name="date" id="date" type="text" class="form-control" [class.mb-4]="eventForm.controls.date?.valid"
+        [(ngModel)]="event.date" required>
+      <div [hidden]="eventForm.controls.date?.valid" class="error-message mb-4">
+        A dátum megadása kötelező!
+      </div>
+      <label for="time">Time</label>
+      <input name="time" id="time" type="text" class="form-control" [class.mb-4]="eventForm.controls.time?.valid"
+        [(ngModel)]="event.time" required>
+      <div [hidden]="eventForm.controls.time?.valid" class="error-message mb-4">
+        Az idő megadása kötelező!
+      </div>
+      <label for="address">Address</label>
+      <input name="address" id="address" type="text" class="form-control"
+        [class.mb-4]="eventForm.controls.address?.valid" [(ngModel)]="event.location.address" required>
+      <div [hidden]="eventForm.controls.address?.valid" class="error-message mb-4">
+        A cím megadása kötelező!
+      </div>
+      <label for="city">City</label>
+      <input name="city" id="city" type="text" class="form-control" [class.mb-4]="eventForm.controls.city?.valid"
+        [(ngModel)]="event.location.city" required>
+      <div [hidden]="eventForm.controls.city?.valid" class="error-message mb-4">
+        A város megadása kötelező!
+      </div>
+      <label for="country">Country</label>
+      <input name="country" id="country" type="text" class="form-control"
+        [class.mb-4]="eventForm.controls.country?.valid" [(ngModel)]="event.location.country" required>
+      <div [hidden]="eventForm.controls.country?.valid" class="error-message mb-4">
+        Az ország megadása kötelező!
+      </div>
+      <button class="btn btn-success btn-block" [disabled]="eventForm.invalid"><i class="fa fa-save"></i></button>
+    </form>
+  </div>
+</div>
